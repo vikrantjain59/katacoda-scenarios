@@ -1,0 +1,41 @@
+---
+    - name: Create a VM
+      vmware_guest:
+        hostname: "{{ hostname_esxi }}"
+        username: ansible.pfshq.com
+        password: #####
+        validate_certs: False
+
+        datacenter: "{{ datacenter }}"
+
+        resource_pool: "{{ resource_pool_esxi }}"
+        cluster: "{{ cluster_esxi }}"
+        guest_id: "{{ guest_id }}"
+        folder: "/{{ datacenter }}/vm"
+        state: poweredon
+        annotation: "{{ annotation }}"
+# hostname gets passed in command line as extra arguments -e hostname=xxxxxxx
+        name: "{{ hostname }}"
+        hardware:
+          memory_mb: "{{ memory_esxi }}"
+          num_cpus: "{{ cpu_esxi }}"
+          scsi: "{{ scsi_esxi }}"
+        wait_for_ip_address: yes
+        disk:
+        - size_gb: "{{ disk_size_1 }}"
+          type: "{{ disk_type }}"
+  
+          datastore: "{{ datastore_cluster_1 }}"
+        - size_gb: "{{ disk_size_2 }}"
+          type: "{{ disk_type }}"
+
+          datastore: "{{ datastore_cluster_2 }}"
+        networks:
+        - name: "{{ network_name }}"
+          domain: "{{ domain }}"
+          device_type: "{{ device_type }}"
+          dns_servers:
+          - "{{ dns1 }}"
+          - "{{ dns2 }}"
+      delegate_to: localhost
+      register: VM
