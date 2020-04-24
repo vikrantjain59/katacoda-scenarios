@@ -1,0 +1,1140 @@
+CA Corp : pdh21vcenter001 (CHQ) 
+CA eComm : asdecommvc01 (CHQ) 
+USA : pdw10vapvcn01 (US) 
+###################################################################################################
+CA New : pda10vapvcn02  = Bloomington and Denver
+CA New : pda20vapvcn01 (Canada / VIDC / Warehouse) 
+	   : pda20vapvcn02  (CHQ / VIDC / brampton / langely )
+https://na-vcenter/
+https://lbw21pocin01a:9443/vsphere-client/?csp
+https://pda20vapvcn02.ca.bestbuy.com/vsphere-client
+https://partnercenter.redhat.com/Dashboard_page
+https://www.redhat.com/en/partners/course_catalog
+https://iam.na.bestbuy.com/password-portal/index.html
+==========================================================================================================
+Physical:
+Bloomington                     (.na.bestbuy.com)
+Bloomington-DMZ           (.bbydmz.com)
+Denver                                (.na.bestbuy.com)
+Denver-DMZ                      (.bbydmz.com)
+
+Virtual:
+Bloomington                     (.na.bestbuy.com)
+Bloomington-DMZ           (.bbydmz.com)
+Denver                                (.na.bestbuy.com)
+Denver-DMZ                      (.bbydmz.com)
+=====================================================================================
+Check Health check status from ilo console.
+AND
+lscpu  CPU information
+lsblk  Block device information
+lsusb  USB controller information
+lspci  PCI device information
+lspci –t  in tree format
+lsscsi  scsi device information
+sudo dmidecode -t memory  About memory
+sudo dmidecode -t system  About system
+sudo dmidecode -t bios  About bios
+sudo dmidecode -t processor  About processor
+=========================================================================================
+Patching - sh /usr/local/bin/sqlbackup.sh
+New puppet server = pdl24viffman01
+ecomm-admin 
+Ecom!l0Admin
+==========================================================================================================
+To take the backup on the servers
+cd /opt/linuxdepots/tcs/scripts/
+sudo ./linux_cfg_bkup.sh
+sudo ./linux_cfg_bkup_Canada.sh
+==================================================================================================
+Creating zero byte file 
+dd if=/dev/zero of=/opt/test bs=10k count=600000
+==========================================================================================================vmware-toolbox-cmd -v
+cat /etc/redhat-release
+sudo subscription-manager status
+sudo subscription-manager list
+sudo rm -rf /var/spool/repackage/*
+sudo rm -rf /var/cache/yum/*
+grep tsflags /etc/yum.conf
+sudo dmidecode | grep -i prod 
+df -h | grep -v home
+yum update -y
+yum --disableexcludes=all --security update
+
+sudo yum repolist
+sudo yum list updates
+
+172.21.119.74 pdl24vifsat01.ca.bestbuy.com pdl24vifsat01
+
+cat /etc/rc.local
+sudo cp -p /etc/rc.local /etc/rc.local.backup
+sudo vi /etc/rc.local
+/var/tools/vmware-tools-distrib/vmware-install.pl -d
+=======================================================================================================================
+
+NSS / PCI / R3
+sudo yum repolist
+sudo yum  --disableexcludes=all update -y
+sudo yum list updates
+sudo tail  /var/log/yum.log
+
+yum --disableexcludes=all --security check-update
+subscription-manager attach --pool=2c95f7ca62873245016287558012180b
+subscription-manager repos --enable=rhel-5-server-els-rpms
+yum list --showduplicates --disableexcludes=all kernel
+yum  --exclude=bbyc-waae-client* update
+yum  --exclude=python2-pyvmomi* update
+
+yum --disableexcludes=all --security update
+==========================================================================================================
+alias a='uname -a'
+Error resolved
+yum-complete-transaction
+yum-complete-transaction --cleanup-only
+yum  --disableexcludes=all update --skip-broken
+yum remove nss;sudo yum remove nss_compat_ossl;sudo yum update nss*;sudo yum install nss_compat_ossl
+yum  --exclude=CARKaim* update
+yum  --exclude=puppet* update
+rpm -qa | grep -i nss_compat
+yum  --exclude=nodejs* update
+yum  --exclude=bbyc-waae* update
+yum list --showduplicates --disableexcludes=all kernel
+yum  --disableexcludes=all update --skip-broken 
+yum update --exclude=bbyc-waae-client-cfg-11.3.6.7-512.x86_64 --skip-broken
+rpm --erase --nodeps libgcrypt
+yum install libgcrypt
+package-cleanup --cleandupes
+
+==============================================================================================================
+Try to remove the package from the yum.conf if having the issue with dependency
+
+[root@pdl20zbbap001 yum.repos.d]# vi /etc/yum.conf
+[main]
+cachedir=/var/cache/yum
+keepcache=0
+debuglevel=2
+logfile=/var/log/yum.log
+distroverpkg=redhat-release
+tolerant=1
+exactarch=1
+obsoletes=1
+gpgcheck=1
+plugins=1
+exclude=lvm2* dejavu* device-mapper* kpartx
+==========================================================================================================
+Repo ID:   rhel-5-server-els-rpms
+Repo Name: Red Hat Enterprise Linux 5 Server - Extended Life Cycle Support (RPMs)
+Repo URL:  https://pdl24vifsat01.ca.bestbuy.com/pulp/repos/BestBuy_Canada/PCI-PROD/PCI/content/els/rhel/server/5/5Server/$b
+           asearch/os
+Enabled:   1
+
+subscription-manager repos --enable=rhel-6-server-optional-rpms  --enable=rhel-rs-for-rhel-6-server-rpms
+=============================================================================================================
+Error 
+Downloading Packages:
+(1/2): kernel-headers-2.6.18-437.el5.x86_64.rpm                                                                                                       | 1.5 MB     00:00
+https://pdl24vifsat01.ca.bestbuy.com/pulp/repos/BestBuy_Canada/BBY_Lower/BBYC_RHEL_Servers/content/els/rhel/server/5/5Server/x86_64/os/Packages/k/kernel-2.6.18-437.el5.x86_64.rpm: [Errno 14] HTTP Error 503: Service Unavailable
+Trying other mirror.
+
+Error Downloading Packages:
+  kernel-2.6.18-437.el5.x86_64: failure: Packages/k/kernel-2.6.18-437.el5.x86_64.rpm from rhel-5-server-els-rpms: [Errno 256] No more mirrors to try.
+
+[root@ptl24vdbcbu01 ~]# yum update
+Loaded plugins: enabled_repos_upload, langpacks, package_upload, product-id, search-disabled-repos, subscription-manager
+https://cdn.redhat.com/BestBuy_Canada/BBY_Lower/BBYC_RHEL_Servers/custom/BBYCRepo/7Server/repodata/repomd.xml: [Errno 14] HTTPS Error 403 - Forbidden
+Trying other mirror.
+To address this issue please refer to the below knowledge base article
+
+https://access.redhat.com/solutions/69319
+    
+Perform below steps  
+yum list installed | grep katello
+yum remove katello-agent katello-ca-consumer-pdl24vifsat01.ca.bestbuy.com.noarch -y
+grep katello register_satellite.sh
+rpm -Uvh http://pdl24vifsat01.ca.bestbuy.com/pub/katello-ca-consumer-latest.noarch.rpm --force
+yum install katello-agent
+yum update kernel
+================================================================================================================
+Vfront Databse update when you are getting error for Duplicate entry
+[root@pdl10vunix01 jstefano]# sh /usr/local/bin/sqlbackup.sh
+ERROR 1062 (23000) at line 2: Duplicate entry 'dtl24vuvinf28' for key 'name'
+[root@pdl10vunix01 tmp]# cd ~jstefano
+
+[root@pdl10vunix01 jstefano]# sh start_mysql.sh
+
+MariaDB [vfront]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| vfront             |
+| vfront_vfront      |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [vfront]> select * from servers where name in ('dtl24vuvinf28');
+ +----------+---------------+-----+--------+------+------------+----+-----------------+-----------+----------+-----------+--------------+----+----------+---------------------+---------------------+----------------------------+---------+----------+------+
+| serverid | name          | env | puppet | fail | compliance | os | kernel          | ossupport | hardware | hwsupport | serialnumber | dc | location | lastupdate          | lastpatched         | application                | contact | comments | todo |
++----------+---------------+-----+--------+------+------------+----+-----------------+-----------+----------+-----------+--------------+----+----------+---------------------+---------------------+----------------------------+---------+----------+------+
+|     2173 | dtl24vuvinf28 |   2 |      1 |    0 |          1 |  8 | 3.10.0-957.10.1 |         2 |        5 |         1 |              |  7 |          | 2019-04-24 11:05:36 | 2018-11-26 00:00:00 | Leo VM for testing FreeIPA | Leo     |          |      |
++----------+---------------+-----+--------+------+------------+----+-----------------+-----------+----------+-----------+--------------+----+----------+---------------------+---------------------+----------------------------+---------+----------+------+
+1 row in set (0.00 sec)
+
+MariaDB [vfront]> delete from servers where serverid=2173;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [vfront]>exit
+===============================================================================================================
+yum clean all
+rpm -Uvh http://pdl24vifsat01.ca.bestbuy.com/pub/katello-ca-consumer-latest.noarch.rpm --force
+subscription-manager list
+subscription-manager refresh
+yum repolist
+yum update nodejs*
+yum list nodejs*
+vi /etc/yum.conf
+yum update nodejs
+puppet agent -t
+=========================================================================================================
+How to find the package related to file
+If you want to see which installed package owns a file, use the -f modifier. Here, we want to see which package owns /etc/passwd.
+[root@pdl10vapspc01 ~]# rpm -q -f /etc/passwd
+setup-2.8.71-9.el7.noarch
+
+[root@pdl10vapspc01 ~]# cat /var/log/yum.log | grep -i setup-2.8.71-9.el7.noarch
+Oct 02 05:24:10 Updated: setup-2.8.71-9.el7.noarch
+Likewise, if you want to generate a list of files belonging to a certain package, use the -l modifier:
+
+[root@alp05xdb ~]# rpm -q -l jre-1.6.0_11-fcs
+/etc
+/etc/.java
+/etc/.java/.systemPrefs
+/etc/.java/.systemPrefs/.system.lock
+/etc/.java/.systemPrefs/.systemRootModFile
+/etc/init.d/jexec
+/usr
+/usr/java
+/usr/java/jre1.6.0_11
+/usr/java/jre1.6.0_11/COPYRIGHT
+/usr/java/jre1.6.0_11/LICENSE
+/usr/java/jre1.6.0_11/README
+/usr/java/jre1.6.0_11/THIRDPARTYLICENSEREADME.txt
+/usr/java/jre1.6.0_11/Welcome.html
+/usr/java/jre1.6.0_11/bin
+
+[vikjain@vlxt01u ~]$ rpm -q -i passwd
+Name        : passwd                       Relocations: (not relocatable)
+Version     : 0.77                              Vendor: Red Hat, Inc.
+Release     : 7.el6                         Build Date: Mon 02 Nov 2015 07:00:38 PM UTC
+Install Date: Wed 20 Sep 2017 07:07:21 PM UTC      Build Host: x86-027.build.eng.bos.redhat.com
+Group       : System Environment/Base       Source RPM: passwd-0.77-7.el6.src.rpm
+Size        : 357699                           License: BSD or GPLv2+
+Signature   : RSA/8, Thu 05 Nov 2015 01:36:50 PM UTC, Key ID 199e2f91fd431d51
+Packager    : Red Hat, Inc. <http://bugzilla.redhat.com/bugzilla>
+URL         : http://fedorahosted.org/passwd
+Summary     : An utility for setting or changing passwords using PAM
+Description :
+This package contains a system utility (passwd) which sets
+or changes passwords, using PAM (Pluggable Authentication
+Modules) library.
+https://www.linuxjournal.com/article/3319
+=====================================================================================================
+Error: Success - empty transaction
+just a reminder that for Redhat 7 Oracle DB servers (and only RH7 DB servers), 
+you *must* revert kmod after patching
+
+yum downgrade -y kmod-20-9.el7.x86_64
+rpm -qa | grep kmod-2
+yum downgrade -y kmod-20-9.el7.x86_64
+=====================================================================================================
+How to use yum to download a package without installing it
+yum install bbyc-autosys-client --downloadonly --downloaddir=/root 
+https://access.redhat.com/solutions/10154 
+(RHEL5)
+# yum install yum-downloadonly
+(RHEL6)
+# yum install yum-plugin-downloadonly
+===================================================================================================================
+[root@dtl24vapjks03 ~]# for x in `cat list`
+> do
+> echo $x
+> yum install -y $x
+> done
+*******************************************************************************************************
+Skip-broken could not solve problems
+Error: Package: lvm2-cluster-2.02.111-2.el6_6.1.x86_64 (@bby-rhel6-resilient-storage-x86-64-fy16-base)
+           Requires: lvm2 = 2.02.111-2.el6_6.1
+           Removing: lvm2-2.02.111-2.el6_6.1.x86_64 (@bby-rhel6-x86-64-fy16-base)
+               lvm2 = 2.02.111-2.el6_6.1
+*********************************************************************************************************
+yum can be configured to try to resolve such errors by temporarily enabling
+disabled repos and searching for missing dependencies.
+To enable this functionality please set 'notify_only=0' in /etc/yum/pluginconf.d/search-disabled-repos.conf
+***************************************************************************************************************
+[root@pdl20mwfrmap01 log]# vi /etc/yum/pluginconf.d/search-disabled-repos.conf
+
+subscription-manager list --available --all | grep -A6 "Resilient Storage" | grep "Pool ID:" | tail -1 | awk '{print $3}' 
+subscription-manager attach --pool= <poolid> 
+Example 
+[root@pdl20mwfrmap01 ~]# sudo subscription-manager list --available --all | grep -A6 "Resilient Storage" | grep "Pool ID:" | tail -1 | awk '{print $3}'
+2c95f7ca58fff6dd0159fb87e6211c97
+[root@pdl20mwfrmap01 ~]# subscription-manager attach --pool=2c95f7ca58fff6dd0159fb87e6211c97
+Successfully attached a subscription for: Resilient Storage
+[root@pdl20mwfrmap01 ~]# subscription-manager  refresh
+
+Enabled all the repository to 1 
+[root@pdl20mwfrmap01 ~]# vi /etc/yum.repos.d/redhat.repo
+[root@pdl20mwfrmap01 ~]# cat /etc/yum.repos.d/redhat.repo  | grep -i enable
+
+For redhat 5 Extended support kernel 431
+Steps Followed,
+Step-1: To get the POOL-Id for RHEL-ELCS (Red Hat Enterprise Linux Extended Life Cycle Support)
+#subscription-manager list --available | grep -A 5 'Red Hat Enterprise Linux Extended Life Cycle Support (Physical or Virtual Nodes)' | grep Pool | awk '{print $3}'
+Step-2: To attach pool in repo
+#subscription-manager attach --pool=2c95f7ca62873245016287558012180b
+Step-3: To enable RHEL-ELCS
+#subscription-manager repos --enable=rhel-5-server-els-rpms
+Step-4 : To validate the latest kernel
+#yum list --showduplicates --disableexcludes=all kernel
+===========================================================================================================
+sudo rm -f /var/lib/rpm/__db*
+sudo rpm --rebuilddb
+sudo yum clean all
+sudo rm -rf /var/spool/repackage/*
+sudo rm -rf /var/cache/yum/*
+vmware-toolbox-cmd -v      
+cat /etc/redhat-release
+uptime
+rpm -qa --queryformat '%{installtime} (%{installtime:date}) %{name}\n' | sort -n | tail -n 1
+===========================================================================================================
+wget --no-check-certificate https://172.21.18.15:9443/dist/register_satellite.sh
+
+[vikjain@pdl24vansb01 ansible]$ host pdl24vifsat01
+pdl24vifsat01.ca.bestbuy.com has address 172.21.119.74
+[vikjain@pdl24vansb01 ansible]$ host pdl24vifrep01
+pdl24vifrep01.ca.bestbuy.com has address 172.21.18.15
+======================================================================================================================
+The manual steps are:
+# yum remove katello-agent katello-ca-consumer-pdl24vifsat01.ca.bestbuy.com.noarch katello-host-tools katello-host-tools-fact-plugin -y
+# subscription-manager clean
+# wget http://pdl24vifrep01.ca.bestbuy.com/dist/register_satellite.sh
+# wget https://pdl24vifrep01.ca.bestbuy.com:9443/dist/reg_ocp.sh --no-check-certificate
+# chmod +x register_satellite.sh
+# ./register_satellite.sh
+===========================================================================================================
+/usr/sbin/subscription-manager unregister 
+/usr/sbin/subscription-manager clean 
+subscription-manager refresh 
+yum clean all 
+subscription-manager repos 
+wget --no-check-certificate http://pdl24vifrep01.ca.bestbuy.com/dist/register_satellite.sh -O /tmp/register_satellite.sh
+chmod +x /tmp/register_satellite.sh
+sh /tmp/register_satellite.sh
+subscription-manager status
+yum check-update | grep -i kernel 
+wget --no-check-certificate http://pdl24vifrep01.ca.bestbuy.com/dist/register_satellite.sh -O /tmp/register_satellite.sh 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+sudo rpm -Uvh http://pdl24vifsat01.ca.bestbuy.com/pub/katello-ca-consumer-latest.noarch.rpm --force
+sudo subscription-manager register --org="BestBuy_Canada" --activationkey="RHEL6" --force
+sudo subscription-manager register --org="BestBuy_Canada" --activationkey="RHEL7" --force
+wget --no-check-certificate https://pdl24vifsat01.ca.bestbuy.com/pub/register_satellite.sh -O /root/register_satellite.sh 
+
+ansible-playbook -i bby_inventory/vikrant pb_satellite_client.yml -vv
+===========================================================================================================
+For stop the cluster in all the server at a time
+/u01/app/12.1.0/grid/bin
+./crsctl stop cluster -all
+===========================================================================================================
+For DB servers  path varies 
+cd /u01/app/12.1.0/grid/bin
+cd /u01/app/12.1.0.2/grid/bin
+
+sudo ./crsctl stop crs
+sudo ./crsctl disable crs
+sudo ./crsctl config crs
+sudo ./crsctl enable crs
+sudo ./crsctl start crs
+===========================================================================================================
+cd /u01/app/12.1.0.2/grid/crs/install
+cd /u01/app/12.1.0/grid/crs/install
+sudo ./rootcrs.pl -unlock
+sudo ./rootcrs.pl -patch
+sudo perl ./rootcrs.pl -patch
+
+cd /u01/app/12.1.0/grid/rdbms/install
+sudo ./rootadd_rdbms.sh
+===========================================================================================================
+start the pep server 
+$ sudo su - defiance
+$ export PEPINST=p22dfap01
+$ cd /opt/defiance/p22dfap01/defiance_dps/bin
+$ ./pepsrvctrl start /opt/defiance/p22dfap01/defiance_dps/data/
+
+su – defiance
+export PEPINST=p01dfap01
+cd /opt/defiance/p01dfap01/defiance_dps/bin
+./pepsrvctrl start /opt/defiance/p01dfap01/defiance_dps/data 
+
+$ ps -ef|grep -i pep
+defiance 12892     1  0  2017 ?        03:01:06 ./pepserver -dir /opt/defiance/p01dfap01/defiance_dps/data
+shbhanda 25054 21258  0 00:56 pts/1    00:00:00 grep -i pep 
+===========================================================================================================
+Oracle ASM
+http://yum.oracle.com/repo/OracleLinux/OL5/latest/x86_64/index.html 
+https://access.redhat.com/downloads/content/oracleasm-rhel5u11/2.0.5-2.el5_11/x86_64/37017186/package  
+
+Please keep in mind the versions for the Oracle AsmLib, 
+as described here: https://www.oracle.com/technetwork/server-storage/linux/asmlib/rhel7-2773795.html 
+
+oracleasmlib-2.0.12-1.el7.x86_64.rpm
+oracleasm-support-2.1.11-2.el7.x86_64.rpm
+
+Oracleasm package installation for RHEL 5 physical servers 
+cd /opt/linuxdepots/oracleasm_rhel5/
+
+[root@dtl24vdbgrid01 ~]# /sbin/blkid | grep oracleasm
+/dev/sdg1: LABEL="VOL2" TYPE="oracleasm"
+/dev/sdf1: LABEL="VOL1" TYPE="oracleasm"
+
+[root@dtl24vdbgrid01 ~]# /etc/init.d/oracleasm querydisk vol1
+Disk "VOL1" is a valid ASM disk
+[root@dtl24vdbgrid01 ~]# /etc/init.d/oracleasm querydisk vol2
+Disk "VOL2" is a valid ASM disk
+
+/etc/init.d/oracleasm listdisks | xargs /etc/init.d/oracleasm querydisk -p
+
+sudo clustat
+sudo /usr/local/cmcluster/bin/cmviewcl
+===========================================================================================================
+/etc/init.d/oracleasm {start|stop|restart|enable|disable|configure|createdisk|deletedisk|querydisk|listdisks|scandisks|status}
+/etc/init.d/oracleasm start
+/etc/init.d/oracleasm stop
+/etc/init.d/oracleasm restart
+/etc/init.d/oracleasm status
+/etc/init.d/oracleasm restart
+
+/usr/sbin/oracleasm init 
+The basic oracleasm commands are:
+    configure        Configure the Oracle Linux ASMLib driver
+    init             Load and initialize the ASMLib driver
+    exit             Stop the ASMLib driver
+    scandisks        Scan the system for Oracle ASMLib disks
+    status           Display the status of the Oracle ASMLib driver
+    listdisks        List known Oracle ASMLib disks
+    listiids         List the iid files
+    deleteiids       Delete the unused iid files
+    querydisk        Determine if a disk belongs to Oracle ASMlib
+    createdisk       Allocate a device for Oracle ASMLib use
+    deletedisk       Return a device to the operating system
+    renamedisk       Change the label of an Oracle ASMlib disk
+    update-driver    Download the latest ASMLib driver
+
+chkconfig oracleasm on
+systemctl enable oracleasm
+systemctl enable oracleasm.service
+
+How To Initialize ASMLib
+/usr/sbin/oracleasm init
+
+How To Scan OracleASM Disks
+oracleasm scandisks
+/etc/init.d/oracleasm scandisks
+
+How To List OracleASM Disks
+oracleasm listdisks|wc -l
+
+How To Query OracleASM Disk
+oracleasm querydisk VOL1
+/etc/init.d/oracleasm querydisk VOL1
+
+How To Rename OracleASM Disk
+oracleasm renamedisk VOL1 VOL4
+/etc/init.d/oracleasm renamedisk VOL1 VOL4
+
+How To Create OracleASM Disk
+oracleasm createdisk VOL1 /dev/sda1
+/etc/init.d/oracleasm createdisk VOL1 /dev/sda1
+===========================================================================================================
+Gateway Netmask 
+
+[vikjain@pdl20edbap003 ~]$ ifconfig
+eno16780032: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.23.13.140  netmask 255.255.255.192  broadcast 172.23.13.191
+[vikjain@pdl20edbap003 ~]$ cat /etc/sysconfig/network-scripts/ifcfg-eno16780032
+
+===========================================================================================================
+sudo cat /var/log/yum.log | grep -i kernel
+rpm -qa |grep -i oracleasm
+rpm -qa | grep -i kernel
+kernel-2.6.18-410.el5
+sudo /etc/init.d/oracleasm restart
+oracleasm-2.6.18-410.el5-2.0.5-1.el5.x86_64.rpm
+
+/etc/init.d/PowerPath start
+
+check the PD service is running on the preferned node
+ps -ef | grep -i pd
+oracle   21497     1  0 Jun18 ?        00:00:07 /u01/app/oracle/local/bin/pd
+
+/u01/app/oracle/local/bin/pd
+============================================================================================================
+GLIBC
+sudo yum update glibc* -y
+sudo yum update qpid-proton
+sudo yum update python-qpid-proton
+sudo yum list glibc*
+===========================================================================================================
+ONce you logged in as a Single user mode in physical box
+ps -ef | grep -i bin
+service network start
+service sssd start
+service sshd start
+==============================================================================================================
+redhat 4 servers
+rpm -e rhn-org-trusted-ssl-cert-1.0-1
+rpm -Uvh http://pdl01sat5in001.na.bestbuy.com/pub/rhn-org-trusted-ssl-cert-1.0-1.noarch.rpm
+rm -f /etc/sysconfig/rhn/systemid
+rm -f /etc/sysconfig/rhn/up2date
+wget -P /etc/sysconfig/rhn/http://pdl01sat5in001.na.bestbuy.com/pub/rhel4/up2date
+rhnreg_ks --activationkey=1-bby-rhel-x86_64-es-4
+service osad start
+rhn-actions-control --enable-all
+up2date --show-channels --dry-run | grep "bby-x86_64-es-4-els"
+rhn-actions-control --report
+up2date --show-channels
+up2date --dry-run
+up2date -u
+up2date -lu
+==============================================================================================================
+How to found the package and command
+$ whereis rhnreg_ks
+rhnreg_ks: /usr/sbin/rhnreg_ks /usr/share/man/man8/rhnreg_ks.8.gz
+ man rhnreg_ks
+ man rpm
+ rpm -qf /usr/sbin/rhnreg_ks
+ up2date-4.9.1-33.el4
+==========================================================================================================
+Roll Back 
+
+* install the package if it is not there * 
+yum install screen
+
+# yum history
+Loaded plugins: product-id, refresh-packagekit, subscription-manager
+Updating Red Hat repositories.
+ID     | Login user               | Date and time    | Action(s)      | Altered
+-------------------------------------------------------------------------------
+     8 | root <root>              | 2011-10-03 14:40 | Install        |    1   
+     7 | root <root>              | 2011-09-21 04:24 | Install        |    1 ##
+     6 | root <root>              | 2011-09-21 04:23 | Install        |    1 ##
+     5 | root <root>              | 2011-09-16 13:35 | Install        |    1   
+The transaction ID we are interested in is '8', so move forward with undo step
+
+# yum history undo 8
+Loaded plugins: product-id, refresh-packagekit, subscription-manager
+Updating Red Hat repositories.
+Undoing transaction 8, from Mon Oct  3 14:40:01 2011
+    Install screen-4.0.3-16.el6.i686
+Resolving Dependencies
+--> Running transaction check	 
+===========================================================================================================
+for i in `cat uname`; do ssh $i ps -ef | grep puppet ; done
+for i in `cat automation`; do echo $i >> /home/u1017311/automation.txt ; ssh $i sudo rpm -qa | grep -i nss* >> /home/u1017311/automation.txt;  done
+for i in `cat vicky`; do ssh -q $i 'cat /etc/rc.local | grep -i vmware;sudo dmidecode | grep -i prod;uname -n'; done 
+for i in `cat vicky`; do ssh -q $i 'uptime ;uname -n;date;sudo yum list updates'; done
+
+vi server_list
+touch output.txt
+
+for i in `cat server_list`; do echo $i; ssh -o "StrictHostKeyChecking no" -q $i 'echo -n $(uname -n)" ";echo $(grep oracle /etc/passwd |cut -d ":" -f 1 )' >> /home/u1017311/output.txt; echo >> /home/u1017311/output.txt; done
+
+cat output.txt | grep .
+=============================================================================================================
+Meanwhile, give it a try to comment out the parameter "rpm_check_debug" in the /etc/yum.conf file followed by flushing away the yum cache.
+So the aforementioned file should look like as below:
+
+---
+-bash-4.2$ grep rpm_check_debug /etc/yum.conf
+           #rpm_check_debug=0
+---
+
+-bash-4.2$ yum clean all && rm -rf /var/cache/yum/* -bash-4.2$ yum repolist
+-bash-4.2$ yum update                                     
+============================================================================================================
+Solaris Commnads 
+
+How to check the Solaris Zones 
+#zoneadm list -vi
+#zoneadm list -vc
+[root@cad1ut020 ~]# zoneadm list -vi
+  ID NAME             STATUS     PATH                           BRAND    IP
+   0 global           running    /                              native   shared
+  16 cprdwu001        running    /zones/cprdwu001               solaris8 shared
+  17 zutas076_ldap    running    /zones/zutas_76                native   excl
+  18 zutsol9          running    /zones/zutsol9                 solaris9 shared
+
+Provide info of particular zone. 
+#zonecfg -z cprdwu001 info
+
+To login to zone from global server
+#zlogin cprdwu001 
+
+stunnel service 
+To clear the failed login or ssh issue 
+/etc/init.d/cswstunnel start
+/etc/init.d/cswstunnel stop
+/etc/init.d/ldap.client stop
+/etc/init.d/ldap.client start
+
+root@cad2upap003 # ./stunnel start
+root@cad2upap003 # ps -ef | grep -i stunnel
+    stun  3810     1   0 01:39:54 ?           0:00 /opt/app/stunnel/bin/stunnel /opt/app/stunnel/etc/stunnel/stunnel_client.conf
+    stun  3805     1   0 01:39:54 ?           0:00 /opt/app/stunnel/bin/stunnel /opt/app/stunnel/etc/stunnel/stunnel_client.conf
+
+To shutdown the server
+#zoneadm -z myzone halt
+
+To start the server
+#zoneadm -z myzone boot 
+
+To boot the server in single user mode from global zone
+Global #zoneadm -z myzone boot -s 
+Ex: #zoneadm -z cprdwu001 boot -s 
+=============================================================================
+Resolving Dependencies
+--> Running transaction check
+---> Package pam.i686 0:1.1.1-20.el6_7.1 will be installed
+       Protected multilib versions: pam-1.1.1-20.el6_7.1.i686 != pam-1.1.1-13.el6.x86_64
+
+Error:  Multilib version problems found. This often means that the root
+       cause is something else and multilib version checking is just
+       pointing out that there is a problem. Eg.:
+	   
+Resolution
+Either install the specific 32bit version of the existing package, ie
+yum install pam-1.1.1-13.el6.i686
+Or Update the package
+yum update pam
+yum install pam.i686
+
+yum-complete-transaction --cleanup-only
+=============================================================================
+ERROR with rpm_check_debug vs depsolve:
+libmcommon.so.0.0.1()(64bit) is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+libmnet.so.0.0.1()(64bit) is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+matahari-lib = 0.4.0-5.el6 is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+libmqmfagent.so.0.0.1()(64bit) is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+matahari-agent-lib = 0.4.0-5.el6 is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+libqpidclient.so.5()(64bit) is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+libqpidcommon.so.5()(64bit) is needed by (installed) matahari-net-0.4.0-5.el6.x86_64
+ You could try running: rpm -Va --nofiles --nodigest
+Your transaction was saved, rerun it with:
+ yum load-transaction /tmp/yum_save_tx-2019-05-09-12-44JUxmrw.yumtx
+Uploading Enabled Repositories Report
+[root@cad1xpbk002 ~]# grep rpm_check_debug /etc/yum.conf
+# rpm_check_debug=0
+[root@cad1xpbk002 ~]# yum clean all && rm -rf /var/cache/yum/*
+
+Resolution
+Remove the package that have missing dependencies.
+rpm -e matahari-net-0.4.0-5.el6.x86_64
+rpm -e matahari-net-0.4.0-5.el6.x86_64 --nodeps (if not removed by above)
+Install it using yum to satisfy dependencies:
+yum install matahari-net
+=============================================================================
+Downloading Packages:
+Running Transaction Test
+Traceback (most recent call last):
+  File "/usr/bin/yum", line 29, in <module>
+    yummain.user_main(sys.argv[1:], exit_code=True)
+  File "/usr/share/yum-cli/yummain.py", line 298, in user_main
+    errcode = main(args)
+  File "/usr/share/yum-cli/yummain.py", line 227, in main
+    return_code = base.doTransaction()
+  File "/usr/share/yum-cli/cli.py", line 547, in doTransaction
+    testcb = RPMTransaction(self, test=True)
+  File "/usr/lib/python2.6/site-packages/yum/rpmtrans.py", line 198, in __init__
+    self._setupOutputLogging(base.conf.rpmverbosity)
+  File "/usr/lib/python2.6/site-packages/yum/rpmtrans.py", line 225, in _setupOutputLogging
+    self.base.ts.ts.scriptFd = self._writepipe.fileno()
+AttributeError: 'NoneType' object has no attribute 'scriptFd'
+
+Resolution
+vi the file and remove the n infront of the debug line
+ConfigParser.ParsingError: File contains parsing errors: /etc/rhsm/rhsm.conf
+        [line 39]: n#config for on-premise management
+
+[root@cad1xpbk002 ~]# vim /etc/rhsm/rhsm.conf
+
+===========================================================================================================
+Error: Package: 2:irqbalance-1.0.7-9.el6.x86_64 (rhel-6-server-rpms)
+           Requires: kernel >= 2.6.32-358.2.1
+           Installed: kernel-2.6.32-131.0.15.el6.x86_64 (@anaconda-RedHatEnterpriseLinux-201105101844.x86_64/6.1)
+               kernel = 2.6.32-131.0.15.el6
+               kernel = 2.6.32-131.0.15.el6
+Error: Package: glibc-headers-2.12-1.212.el6.x86_64 (rhel-6-server-rpms)
+           Requires: kernel-headers >= 2.2.1
+Error: Package: glibc-headers-2.12-1.212.el6.x86_64 (rhel-6-server-rpms)
+           Requires: kernel-headers
+**********************************************************************
+yum can be configured to try to resolve such errors by temporarily enabling
+disabled repos and searching for missing dependencies.
+To enable this functionality please set 'notify_only=0' in /etc/yum/pluginconf.d/search-disabled-repos.conf
+
+Resolution
+vi the file and change to 'notify_only=0' in /etc/yum/pluginconf.d/search-disabled-repos.conf
+============================================================================================================
+Ecommerce’s software is dependent on 4.5; therefor I’ve had to roll back to 4.5 in TEST1 and TEST4 environments.
+We should be careful and do an exclude=nodejs* in our next patching
+Because it is all packaged, it’s simple to remove the two new packages, and reinstall back to the prior version
+
+rpm -ev nodejs-6.10.1-2.el7.x86_64  npm-3.10.10-1.6.10.1.2.el7.x86_64
+yum -y install nodejs-4.5.0
+============================================================================================================
+--> Finished Dependency Resolution
+ You could try using --skip-broken to work around the problem
+** Found 5 pre-existing rpmdb problem(s), 'yum check' output follows:
+abrt-addon-ccpp-2.0.8-26.el6_6.1.x86_64 has missing requires of abrt = ('0', '2.0.8', '26.el6_6.1')
+abrt-addon-kerneloops-2.0.8-26.el6_6.1.x86_64 has missing requires of abrt = ('0', '2.0.8', '26.el6_6.1')
+abrt-addon-python-2.0.8-26.el6_6.1.x86_64 has missing requires of abrt = ('0', '2.0.8', '26.el6_6.1')
+abrt-cli-2.0.8-26.el6_6.1.x86_64 has missing requires of abrt = ('0', '2.0.8', '26.el6_6.1')
+rhn-check-1.0.0.1-18.el6.noarch has missing requires of yum-rhn-plugin >= ('0', '0.9.1', '35')
+FATAL: all hosts have already failed -- aborting
+
+** Found 34 pre-existing rpmdb problem(s), 'yum check' output follows:
+cas-0.15-1.el6.1.noarch has missing requires of python(abi) = ('0', '2.6', None) hal-info-20090716-5.el6.noarch has missing requires of hal >= ('0', '0.5.10', None)
+libproxy-bin-0.3.0-10.el6.x86_64 has missing requires of libproxy = ('0', '0.3.0', '10.el6')
+libproxy-bin-0.3.0-10.el6.x86_64 has missing requires of libproxy.so.0()(64bit)
+libproxy-python-0.3.0-10.el6.x86_64 has missing requires of libproxy = ('0', '0.3.0', '10.el6')
+
+Resolution
+1. I can see that you have upgraded your system from RHEL 6 to 7, but there are still RHEL 6 packages 
+installed in the system and they are causing these dependencies.
+Let's go ahead and remove the RHEL 6 packages from the rpm database and update the system:
+
+   # rpm -e --nodeps --justdb $(rpm -qa | grep el6)
+   # yum update
+===========================================================================================================
+hastatus -sum
+hastatus -sum | grep -i cad2xpap011
+A  cad2xpap011          RUNNING              0
+B  ClusterService  cad2xpap011          Y          N               OFFLINE
+B  ip_multinicA    cad2xpap011          Y          N               ONLINE
+B  mqbroker_03     cad2xpap011          Y          N               OFFLINE
+
+hagrp -state ip_multinicA
+#Group       Attribute             System      Value
+ip_multinicA State                 cad2xpap005 |ONLINE|
+ip_multinicA State                 cad2xpap007 |ONLINE|
+ip_multinicA State                 cad2xpap010 |ONLINE|
+ip_multinicA State                 cad2xpap011 |ONLINE|
+
+hastop -local
+
+===========================================================================================================
+solaris patching
+0tvor5a! 
+
+zoneadm list -iv
+zlogin shutdown -i0 -g0 -y
+shutdown -i0 -g0 -y
+Go to Console exit from the ok prompt 
+#.
+sc> poweroff -y
+logout
+
+take the server console by -rib or -sc
+sc> console -f
+-> start SP/console -f
+Checking the prerequesting
+df -k | grep -v home
+netstat -nrv
+ifconfig -a
+cat /etc/vfstab
+date; uname -a; uptime
+
+Go to patching path and if you want to rename th elu than use below command
+root@rxp04lda # luumount pca_June2016
+root@rxp04lda # lurename -e pca_June2016 -n pca_July2016
+
+cd /opt/depots/Solaris/10_Recommended_CPU_2016_04/
+
+./installpatchset --apply-prereq --s10patchset
+./installpatchset -B pca_July2016 --apply-prereq --s10patchset
+./installpatchset -B pca_July2016 --s10patchset
+ 
+ts_menu
+select the server no 
+sudo /usr/sbin/lustatus
+sudo /usr/sbin/lumount pca_June2016
+cd /.alt.pca_June2016/var/sadm/install_data/
+cat s10s_rec_patchset_short_2014.08.14_06.15.19.log
+
+lustatus
+luumount pca_June2016 (if itis alreadymounted) 
+luactivate pca_June2016
+shutdown -y -i6 -g0
+
+root@dxp10lda # svcs -xv
+svc:/application/print/server:default (LP print server)
+ State: disabled since Sun Sep 20 01:01:55 2015
+Reason: Disabled by an administrator.
+   See: http://sun.com/msg/SMF-8000-05
+   See: man -M /usr/share/man -s 1M lpsched
+Impact: 1 dependent service is not running:
+        svc:/application/print/rfc1179:default
+========================================================================================================================================
+uname -a
+df -h | grep -v home
+sudo cat /etc/kdump.conf|grep -v "#"
+sudo hpssacli controller all show config 
+
+Check the sas disk
+sudo hpssacli controller all show config
+
+Check the FS/VG details
+df -hP |grep -i var
+/dev/mapper/vg_var_crash-lv_var_crash
+                      414G 1.5G 391G 1% /var/crash
+sudo vgdisplay -v vg_var_crash
+Get the pV name and look for pv details
+sudo /home/a1106905/emc_inq/inq.linux
+or
+fdisk -l |more
+
+cat /etc/kdump.conf
+
+========================================================================================================================================
+/usr/bin/sudo cat /etc/grub.conf|grep crash|grep -v "#"
+/usr/bin/sudo cat /etc/kdump.conf|egrep -i "uuid|core"
+/usr/bin/sudo /sbin/service kdump status
+/usr/bin/sudo df -h /var/crash
+/usr/bin/sudo /sbin/fdisk -l|grep Disk|grep cciss
+/usr/bin/sudo /usr/sbin/hpssacli controller all show config|grep logicaldrive
+/usr/bin/sudo hpasmcli -s "SHOW ASR"
+/usr/bin/sudo  /sbin/chkconfig --list|grep -i asr
+/usr/bin/sudo /sbin/service collectl status
+/usr/bin/sudo  cat /etc/collectl.conf|grep -v "#"|grep  -i Daemon
+========================================================================================================================================
+sudo rpm -qa | grep hponcfg*
+ls -lrt /mnt
+sudo mount -t cifs -o user=hpspp,pass=4upDate$,noservino //168.94.70.207/MediaFolder /mnt/
+cd /mnt/spp201604/payload_utils
+sudo rpm - ivh hponcfg-4.6.0-0.x86_64.rpm
+
+cd /opt/linuxdepots/abc/
+sudo sh hpeiloconfigv6.sh
+========================================================================================================================================
+Create the file passwd_reset_ilo.xml and append teh below in that file 
+
+<RIBCL VERSION="2.0">
+<LOGIN USER_LOGIN="Administrator" PASSWORD="unknown">
+<USER_INFO MODE="write">
+<MOD_USER USER_LOGIN="Administrator">
+<PASSWORD value="password"/>
+</MOD_USER>
+</USER_INFO>
+</LOGIN>
+</RIBCL>
+
+hponcfg –a -w ilo-config.xml
+
+hponcfg -f passwd_reset_ilo.xml
+
+hponcfg -f ilopassword.xml 
+
+================================================================================================================================================
+Puppet - Things to check 
+
+1)The localhost and the puppet server should be in /etc/hosts
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+172.19.84.71   dtl21c75ap001.ca.bestbuy.com dtl21c75ap001
+172.21.18.30 pdl24viffman01.ca.bestbuy.com pdl24viffman01 puppet puppetdb
+
+2)Test (as root) with # puppet agent –t
+ 
+3)If you get a cert error like this:
+[root@dtl21c75ap001 ~]# puppet agent -t
+Info: Creating a new SSL key for dtl21c75ap001.ca.bestbuy.com
+Info: Caching certificate for ca
+Info: Caching certificate for dtl21c75ap001.ca.bestbuy.com
+Error: Could not request certificate: The certificate retrieved from the master does not match the agent's private key.
+Certificate fingerprint: 25:EE:85:E3:AC:07:FA:46:7E:63:C6:91:F0:79:61:4D:2A:E2:CA:F6:F1:2A:9D:68:DE:D8:9D:35:A2:8A:37:30
+To fix this, remove the certificate from both the master and the agent and then start a puppet run, which will automatically regenerate a certficate.
+On the master:
+  puppet cert clean dtl24vapdpc71.ca.bestbuy.com
+On the agent:
+  rm -f /var/lib/puppet/ssl/certs/dtl21c75ap001.ca.bestbuy.com.pem
+  puppet agent -t
+you need to do the following:
+                alp01ecdeploy: # find /var/lib/puppet/ssl -name “host-that-is-failing*” –delete
+                client:                    # rm –Rf /var/lib/puppet/ssl/*
+
+find /var/lib/puppet/ssl -name “dtl24vapdpc71*” –delete			
+puppet cert clean dtl24vapdpc71.ca.bestbuy.com
+
+
+1. Stop the puppet service on VM - systemctl stop puppet.service 
+2. Remove the puppet cert on the client vm - find /var/lib/puppet/ssl/ -name '*.pem' -delete
+3. start puppet agent daemon - systemctl start puppet.service 
+4. Check Status 0f the service - systemctl status puppet.service
+5. Check the puppet logs - /var/log/puppet/puppet.log
+6. login to puppet console - https://alp01ecdeploy/users/login (web or Unix Console)
+7. it should be able to display the host entry then, we are going to change the environment and hostgroup.
+8. 
+
+sbrynen@dtl24vuvinf11 ~]$ cat /etc/hosts 
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 
+172.21.128.111   pdl20awtnl003.ca.bestbuy.com pdl20awtnl004 
+172.21.18.14 alp01ecdeploy.ca.bestbuy.com alp01ecdeploy puppet puppetdb
+================================================================================================================================================
+MCCP/Dev Full Access for lower environment 
+
+change the parameter disp_qos = lossless in the cat /etc/audit/auditd.conf  for the resolution of the issue. 
+
+================================================================================================================================================
+Can you please make sure that all of our housekeeping is done on these three machines, they still need (at least):
+•        Added to Inventory
+•        CIs (dev) added to Service Now
+Per https://sites.bestbuy.com/ca/e-commerce/ecomminfrasupport/platform/Wiki/Server%20Commission%20Process.aspx
+I put them in the DevFullAccess group and then once things were applied, I’ve removed them again, which should allow Docker to run properly.
+================================================================================================================================================
+RITM0131249 - example 
+Further to that, here’s how to request US network IPs/DNS in Service Now
+•         Self-Service
+•         Request Catalog
+•         IT Infrastructure (not CA Service Requests, as this is a US request)
+•         Network Requests
+•         IP & DNS
+o   Description: Need two IPs/DNS names on 168.94.44.128/VLAN 2069 (Bloomington)
+o   PCM is the team lead of person who needs it (in this case Oriol)
+o   The Owner Group is L3-UNIX-IT-CAN
+o   Add the details at the bottom 
+
+M: +1 (604) 307-9282   
+=================================================================================================================================================
+Also, please run through the checklist for new server builds, I suspect there are still a bunch of things to do as part of the build activate, 
+definitely we’re going to need to install the backup agents.  
+Here’s the reference for everything that has to happen when any new machine is built:
+https://sites.bestbuy.com/ca/e-commerce/ecomminfrasupport/platform/Wiki/Server%20Commission%20Process.aspx
+
+Here’s the reference of how to install Netbackup
+https://sites.bestbuy.com/ca/e-commerce/ecomminfrasupport/platform/Wiki/Veritas%20Netbackup%20-%20Canada%20-%20Linux%20Client.aspx
+
+You only need to grab the linux file, not the [massive] “all clients” tarballs for the install.  Once it’s installed, as part of the 
+build/activate CHG, you can add a task to the backup team to add it to backups.
+===============================================================================================================================================================
+RITM0153155 – Request was created yesterday. Please allow some time to process these requests. However, I have forwarded request for approval to Jeff Johnson.
+RITM0153269 – Request is completed by CAP team.
+RITM0153471 - Request was created this morning. However, I have forwarded request for approval to Jeff Johnson and Harjot Pooni.
+RITM0153360 - Administrative Access Request is not handled by us. But, when I checked request is pending approval from Jeff Johnson.
+4.Send request in servivce now for DMZ account-Ex..........RITM0092772 and RITM0102629 for old user who shifted in BBY-CANADA
+5. Request send for -A account--RITM0095626----------------RITM0102633 for old user who shifted in BBY-CANADARoo
+=================================================================================================================================================================================
+1. Server hostname : DTL21WMHAP061.ca.bestbuy.com
+2. OS version : RHEL7    
+3. Location :ECOMM / Bit9 Prod
+4. Puppet registration : Yes , visible in foreman 
+5. Environment : Test boxes , DEv boxes
+6. Application purpose : MQ Broker
+7. Contact detail : Philip Lee
+8. Comment : RITM0154142 
+=================================================================================================================================================================================
+Find and kill the bad perfd process (with a -9) (which was using all the memory)
+
+Then kill the spurious ldap_clients
+
+After that, you just need to clear the ldap service with 
+
+# svcadm clear svc:/network/ldap/client
+And restart it
+# svcadm disable svc:/network/ldap/client
+# svcadm enable svc:/network/ldap/client
+=================================================================================================================================================================================
+clone the VM need to change below parameters in redhat 7
+**(Need to change the Mac Address in case of OVM server in /etc/sysconfig/network-scripts/ifcfg-ens192 )
+
+• Update the hostname in /etc/sysconfig/network, if it's not there add:HOSTNAME=newname.ca.bestbuy.com
+# vim /etc/sysconfig/network
+• Update the hostname (if it's there) and IP in /etc/sysconfig/network-scripts/ifcfg-eth0 (or whatever it may be called)
+# vim /etc/sysconfig/network-scripts/ifcfg-ens192
+• Update the hostname and IP in /etc/hosts : 
+# vim /etc/hosts
+• Update the hostname and in /etc/hostname 
+# vim /etc/hostname
+• stop the puppet service and remove all old certs:  
+# systemctl stop puppet
+# systemctl status puppet
+# find /var/lib/puppet/ssl -name '*.pem' -delete
+• RHEL6, you need to delete /etc/udev/rules.d/70-persistent-net.rules
+• reboot the machine
+# shutdown -r now
+==========================================================================================================
+[root@dtl24vuvinf26 ~]# cat systemdata.bash 
+#!/bin/bash 
+echo "OS Version Solaris" 
+cat /etc/redhat-release 
+echo "----------------"  
+
+echo "PATCH/KERNAL LEVEL" 
+uname -r 
+echo "----------------" 
+
+echo "OS Version REdhat" 
+cat /etc/redhat-release 
+
+echo "----------------" 
+echo "Firmware & Bios" 
+dmidecode | grep -A30 "BIOS Information" 
+echo "----------------" 
+
+echo "Serial Number" 
+dmidecode -s system-serial-number 
+echo "----------------" 
+
+echo "VMWare -Version" 
+vmware-toolbox-cmd -v 
+echo "-----------------" 
+[root@dtl24vuvinf26 ~]
+=================================================================================================================
+ansible password 
+
+#echo "YOURSSHPASSWORD" > password ; ansible-vault encrypt_string --vault-id vikjain@password 'SECOND_PASSWORD' --name 'vikjain_passwd' 
+
+===============================================================================================================
+Poweron the servers through Powershell
+
+Connect-VIServer pda20vapvcn02
+cls
+Write-Host "The servers in the Notepad are "
+$computer = Get-Content -Path "C:\Users\vikjain\Desktop\Server.txt"
+$computer
+get-vm -Name $computer |Start-VM -Verbose |FT  
+
+===============================================================================================================
+Poweroff the servers through Powershell
+
+Connect-VIServer pda20vapvcn02
+cls
+Write-Host "The servers in the Notepad are "
+$computer = Get-Content -Path "C:\Users\vikjain\Desktop\Server.txt"
+$computer
+get-vm -Name $computer |Stop-VMGuest -Verbose  
+===============================================================================================================
+Getting Information of the VMs
+
+PS C:\Users\vikjain> Connect-VIServer pda10vapvcn02
+
+Name                           Port  User                          
+----                           ----  ----                          
+pda10vapvcn02                  443   CA\vikjain      
+
+
+PS C:\Users\vikjain> Connect-VIServer pda20vapvcn02
+
+Name                           Port  User                          
+----                           ----  ----                          
+pda20vapvcn02                  443   CA\vikjain  
+
+cls
+Write-Host "The servers in the Notepad are "
+$computer = Get-Content -Path "C:\Users\vikjain\Desktop\Server.txt"
+$computer
+get-vm -Name $computer | FT
+===============================================================================================================
+Remove the snapshot of VM 
+Get-VM (Get-Content C:\Users\vikjain\Desktop\Server.txt) | Get-Snapshot | Remove-Snapshot -confirm 
+===============================================================================================================
+Take the snapshot of VM 
+Get-VM -Name (Get-Content -Path "C:\Users\vikjain\Desktop\Server.txt") | New-Snapshot -Name "Taking snapshot for the Change CR CHG0251741 " -Description "CHG0251741  - Patching servers"
+
+Get-Snapshot -VM (Get-Content -Path "C:\Users\vikjain\Desktop\Server.txt") |select VM |Out-File C:\temp\serversnapshot.txt
+===============================================================================================================
+
+PS Microsoft.PowerShell.Core\FileSystem::\\ca.bestbuy.com\Personal\Node01\vikjain> Connect-VIServer pda20vapvcn02
+WARNING: Please consider joining the VMware Customer Experience Improvement Program, so you can help us make
+ PowerCLI 
+a better product. You can join using the following command:
+
+Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $true
+
+VMware's Customer Experience Improvement Program ("CEIP") provides VMware with information that enables VMware 
+to improve its products and services, to fix problems, and to advise you on how best to deploy and use 
+our products.  As part  of the CEIP, VMware collects technical information about your organization’s use of 
+VMware products and services on a  regular basis in association with your organization’s VMware license key(s). 
+ This information does not personally id entify any individual.
+
+For more details: type "help about_ceip" to see the related help article.
+
+To disable this warning and set your preference use the following command and restart PowerShell: 
+Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $true or $false.
+
+Name                           Port  User                          
+----                           ----  ----                          
+pda20vapvcn02                  443   CA\vikjain                    
+
+
+
+PS Microsoft.PowerShell.Core\FileSystem::\\ca.bestbuy.com\Personal\Node01\vikjain> Get-VM dtw24vuvplt25
+
+Name                 PowerState Num CPUs MemoryGB       
+----                 ---------- -------- --------       
+DTW24VUVPLT25        PoweredOn  2        8.000          
+
+
+
+PS Microsoft.PowerShell.Core\FileSystem::\\ca.bestbuy.com\Personal\Node01\vikjain> Get-VM -VM DTL24TOKAPC51 | New-Snapshot -Name "test Snapshot of first Vm" -Description CI5 
+Get-VM : A parameter cannot be found that matches parameter name 'VM'.
+At line:1 char:8
++ Get-VM -VM DTL24TOKAPC51 | New-Snapshot -Name "test Snapshot of first ...
++        ~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-VM], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,VMware.VimAutomation.ViCore.Cmdlets.Commands.GetVM
+ 
+
+PS Microsoft.PowerShell.Core\FileSystem::\\ca.bestbuy.com\Personal\Node01\vikjain> Get-VM DTL24TOKAPC51 | New-Snapshot -Name "test Snapshot of first Vm" -Description CI5
+
+Name                 Description                    PowerState     
+----                 -----------                    ----------     
+test Snapshot of ... CI5                            PoweredOff     
+
+PS Microsoft.PowerShell.Core\FileSystem::\\ca.bestbuy.com\Personal\Node01\vikjain> 
+===============================================================================================================================================================
+https://pdfcompressor.com/
+https://www.convert-jpg-to-pdf.net/result.php?margin_size=2&page_size=1&image_size=1&page_orientation=1
+
+Dear VIKRANT Please find below the steps for ADP Registration Visit ADPs Learning Services site to view 
+the demonstration: http://www1.adp.ca/learningservices/WFN/WFN/content/W4023/IntroWFNMSS.htm Below 
+are the instructions on how to register in ADP: 
+1. Go to: https://workforcenow.adp.com/public/index.htm 
+2. Click on Register Here at the bottom of the page 
+3. Read and Accept the Terms and Conditions as presented 
+4. Enter the Registration Code as per below: Registration Code: TCSCI-1234. 
+5. Click next and enter the following information in the next screen. 
+First Name:	VIKRANT Last Name:	JAIN 
+Associate lD:	LFA2J4U6Z 
+Birthdate (DD/MM/YYYY): 04/07/1985 
+6. Once you have entered the above information, 
+a new screen will allow you to enter your User lD and password. 
+The next screen is for 3 Security questions and answers - 
+this information is used to allow you to reset your password 
+if you forget either your user lD and/or password. 
+7. The next screen is for your contact information. 
+Your contact information is very important because an 
+activation code will be sent to you at the email address you provide at this stage. 
+8. Go to your mail to get the activation code and click next. 
+9. The final step allows you to review and confirm your information. 
+Click "previous" to go back and change/correct any information. 
+Thanks
+vikjain
+jaimahavir1@
+
+https://ww2.2018.turbotaxonline.intuit.ca/signup?_swlg=en&_proId=1&_brand=&affiliate=&iref=&_scId=
+vikrantjain59
+Jaimahavir12@
+superman

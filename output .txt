@@ -1,0 +1,279 @@
+https://labs.opentlc.com/service/explorer  
+Your Red Hat OPENTLC SSO account with login 
+ID - jain.vikrant-tcs.com 
+PW - Jaimahavir12
+Email ID - jain.vikrant@tcs.com
+
+https://access.ravellosystems.com/simple/#/zWkv29YwbqydsSfoAWJ960qen9ZvCFh47d9SEFXEEqCiYfb0RNfAWqIM1nZMOPk6/apps/86317468
+
+course catalogue
+https://partnercenter.force.com/s/course_catalog
+
+Redhat account 
+https://sso.redhat.com/auth/realms/redhat-external/protocol/saml/clients/redhat?RelayState=%2Fapex%2FLMSLogin
+https://rod.sumtotalsystems.com/redhat/app/management/LMS_LearnerHome.aspx?FromLogin=1
+ID - Jain.vikrant@tcs
+PW - Jaimahavir12
+
+============================================================================================================================================================================================================================================================================
+BRwcma7txyx995Uc3jGmcuuV2nkVBsSgkK
+ETH804987
+433329336a
+Jaimahavir12#
+
+ETH774563
+16018e50ec
+.101015
+
+rpahelwan@gmail.com
+ET63658
+
+vjain85
+Jaimahavir123#
+
+https://btc-e.com/profile#funds/deposit/usd 
+https://ethexindia.com/trade
+https://cex.io/finance/transactions
+===========================================================================================================================================
+system name : last 39  , username shbhanda  password : Denver$123
+cad1upap002 
+cprasu102 exclude stunnel pat ch/ openssl 
+===========================================================================================================================================
+root 
+P@55r00tForPr0d#  
+admin 
+c0N5O!e
+===========================================================================================================================================
+cd /opt/SUNWexplo/bin
+./explorer
+cd /opt/SUNWexplo/output
+lucreate -n pca_Apr2017
+ls -ltr |grep -i jan|awk '{print $NF}'
+cd /var/core
+ls -ltr |grep -i sep |awk '{print $9}'
+
+more patch_order | grep -i 148071
+more patch_order | grep -i 151912
+
+./installpatchset --apply-prereq --s10patchset
+
+cad2xpfs001
+cad2xpfs002
+====================================================================================================================cat /proc/cpuinfo | grep physical
+cat /proc/cpuinfo | grep core
+uname -a
+cat /etc/redhat-release
+dmidecode |grep Product
+dmidecode | grep Version
+dmidecode -s system-serial-number
+hpacucli ctrl all show config
+===========================================================================================================================================
+For HPILO services need to start/stop
+/etc/init.d/hpasm status
+/etc/init.d/hpsmhd status
+chkconfig --list | grep ilo
+chkconfig --list | grep -i ipmi
+-bash-3.00# service ipmi status
+ipmi_msghandler module loaded.
+ipmi_si module loaded.
+ipmi_devintf module loaded.
+/dev/ipmi0 exists.
+===========================================================================================================================================
+For VCS cluster
+ps -ef | grep had 
+-bash-3.00# /opt/VRTSvcs/bin/had status
+VCS INFO V-16-1-10601 Usage:
+        hastart -onenode
+        hastart -help
+        hastart -v
+        hastart -version
+/opt/VRTSvcs/bin/hastatus -sum
+===========================================================================================================================================
+find /tmp/ -maxdepth 1 -name "auto_rem*"  | wc -l
+find /tmp/ -maxdepth 1 -daystart -mtime +1 -name "auto_rem*" -exec rm -fr {} \;
+===========================================================================================================================================
+service ds_agent status
+-bash-3.00# cd /opt/linuxdepots/tcs/
+-bash-3.00# ls
+linux_cfg_bkup_Canada.sh  servers_config_backup
+-bash-3.00# ./linux_cfg_bkup_Canada.sh
+===========================================================================================================================================
+root@cad1upap002# lustatus
+Boot Environment           Is       Active Active    Can    Copy
+Name                       Complete Now    On Reboot Delete Status
+-------------------------- -------- ------ --------- ------ ----------
+pca_June2016               yes      no     no        yes    -
+pca_Q03Sep2016             yes      yes    yes       no     -
+root@cad1upap002# df -h
+Filesystem             size   used  avail capacity  Mounted on
+rpool/ROOT/pca_Q03Sep2016
+                        67G   9.8G    19G    34%    /
+/devices                 0K     0K     0K     0%    /devices
+ctfs                     0K     0K     0K     0%    /system/contract
+proc                     0K     0K     0K     0%    /proc
+mnttab                   0K     0K     0K     0%    /etc/mnttab
+swap                    11G   1.7M    11G     1%    /etc/svc/volatile
+objfs                    0K     0K     0K     0%    /system/object
+sharefs                  0K     0K     0K     0%    /etc/dfs/sharetab
+/platform/SUNW,Sun-Fire-T1000/lib/libc_psr/libc_psr_hwcap1.so.1
+                        29G   9.8G    19G    34%    /platform/sun4v/lib/libc_psr.so.1
+/platform/SUNW,Sun-Fire-T1000/lib/sparcv9/libc_psr/libc_psr_hwcap1.so.1
+                        29G   9.8G    19G    34%    /platform/sun4v/lib/sparcv9/libc_psr.so.1
+fd                       0K     0K     0K     0%    /dev/fd
+rpool/ROOT/pca_Q03Sep2016/var
+                        67G   8.1G    19G    30%    /var
+swap                   512M   400K   512M     1%    /tmp
+swap                    11G    72K    11G     1%    /var/run
+rpool/export            67G    22K    19G     1%    /export
+rpool/export/home      2.0G   1.0G   989M    52%    /export/home
+rpool/app               15G   7.7G   7.3G    52%    /opt/app
+rpool                   67G    96K    19G     1%    /rpool
+rpool/core             5.0G   2.3G   2.7G    46%    /var/core
+rpool/crash            8.0G   9.4M   8.0G     1%    /var/crash
+root@cad1upap002# uptime
+ 10:30pm  up 37 day(s),  5:09,  6 users,  load average: 0.49, 0.50, 0.57
+root@cad1upap002# echo | format
+Searching for disks...done
+
+===========================================================================================================================================
+AVAILABLE DISK SELECTIONS:
+       0. c0t0d0 <SUN72G cyl 14087 alt 2 hd 24 sec 424>
+          /pci@7c0/pci@0/pci@8/scsi@2/sd@0,0
+       1. c0t1d0 <SUN72G cyl 14087 alt 2 hd 24 sec 424>
+          /pci@7c0/pci@0/pci@8/scsi@2/sd@1,0
+Specify disk (enter its number): Specify disk (enter its number):
+root@cad1upap002# netstat -nrv
+
+IRE Table: IPv4
+  Destination             Mask           Gateway          Device Mxfrg Rtt   Ref Flg  Out  In/Fwd
+-------------------- --------------- -------------------- ------ ----- ----- --- --- ----- ------
+default              0.0.0.0         168.94.169.1                 1500*    0   1 UG     953      0
+168.94.169.0         255.255.255.192 168.94.169.59        bge0    1500*    0   1 U       64      0
+224.0.0.0            240.0.0.0       168.94.169.59        bge0    1500*    0   1 U        0      0
+127.0.0.1            255.255.255.255 127.0.0.1            lo0     8232*    0  65 UH  7463893      0
+root@cad1upap002# ifconfig -a
+lo0: flags=2001000849<UP,LOOPBACK,RUNNING,MULTICAST,IPv4,VIRTUAL> mtu 8232 index 1
+        inet 127.0.0.1 netmask ff000000
+bge0: flags=1000843<UP,BROADCAST,RUNNING,MULTICAST,IPv4> mtu 1500 index 2
+        inet 168.94.169.59 netmask ffffffc0 broadcast 168.94.169.63
+        ether 0:14:4f:6f:59:90
+root@cad1upap002# zfslist
+bash: zfslist: command not found
+root@cad1upap002# zfs list
+NAME                                           USED  AVAIL  REFER  MOUNTPOINT
+rpool                                         47.5G  19.4G    96K  /rpool
+rpool/ROOT                                    26.5G  19.4G    18K  legacy
+rpool/ROOT/pca_100925                          503M  19.4G  8.71G  /
+rpool/ROOT/pca_100925/var                      137M  19.4G  8.14G  /var
+rpool/ROOT/pca_June2016                        132M  19.4G  9.68G  /
+rpool/ROOT/pca_June2016/var                   27.3M  19.4G  8.06G  /var
+rpool/ROOT/pca_Q03Sep2016                     25.9G  19.4G  9.81G  /
+rpool/ROOT/pca_Q03Sep2016@pca_110425          3.09G      -  8.50G  -
+rpool/ROOT/pca_Q03Sep2016@pca_Q03Sep2016       271M      -  9.71G  -
+rpool/ROOT/pca_Q03Sep2016/var                 12.7G  19.4G  8.12G  /var
+rpool/ROOT/pca_Q03Sep2016/var@pca_100925       417M      -  3.85G  -
+rpool/ROOT/pca_Q03Sep2016/var@pca_110425      3.96G      -  8.06G  -
+rpool/ROOT/pca_Q03Sep2016/var@pca_Q03Sep2016   175M      -  8.06G  -
+rpool/app                                     7.68G  7.32G  7.68G  /opt/app
+rpool/core                                    2.27G  2.73G  2.27G  /var/core
+rpool/crash                                   9.41M  7.99G  9.41M  /var/crash
+rpool/dump                                    2.00G  19.4G  2.00G  -
+rpool/export                                  1.03G  19.4G    22K  /export
+rpool/export/home                             1.03G   989M  1.03G  /export/home
+rpool/swap                                    8.00G  19.4G  8.00G  -
+root@cad1upap002# zpool status
+  pool: rpool
+ state: ONLINE
+status: The pool is formatted using an older on-disk format.  The pool can
+        still be used, but some features are unavailable.
+action: Upgrade the pool using 'zpool upgrade'.  Once this is done, the
+        pool will no longer be accessible on older software versions.
+ scan: none requested
+config:
+
+        NAME          STATE     READ WRITE CKSUM
+        rpool         ONLINE       0     0     0
+          mirror-0    ONLINE       0     0     0
+            c0t0d0s0  ONLINE       0     0     0
+            c0t1d0s0  ONLINE       0     0     0
+
+errors: No known data errors
+root@cad1upap002#
+===========================================================================================================================================
+bash-3.2# lustatus
+Boot Environment           Is       Active Active    Can    Copy
+Name                       Complete Now    On Reboot Delete Status
+-------------------------- -------- ------ --------- ------ ----------
+pca_100925                 yes      no     no        yes    -
+pca_May2016                yes      no     no        yes    -
+pca_oct2016                yes      yes    no        no     -
+pca_Apr2017                yes      no     yes       no     -
+bash-3.2# date
+Saturday, April 15, 2017 11:27:29 PM PDT
+bash-3.2# uptime
+ 11:27pm  up 174 day(s), 22:26,  4 users,  load average: 1.34, 1.26, 1.73
+
+ ===========================================================================================================================================
+ root@cad1upap002# lustatus
+Boot Environment           Is       Active Active    Can    Copy
+Name                       Complete Now    On Reboot Delete Status
+-------------------------- -------- ------ --------- ------ ----------
+pca_June2016               yes      no     no        yes    -
+pca_Q03Sep2016             yes      yes    no        no     -
+pca_Apr2017                yes      no     yes       no     -
+root@cad1upap002# uptime
+  1:14am  up 37 day(s),  7:53,  5 users,  load average: 0.78, 0.81, 1.24
+===========================================================================================================================================
+How to create the partition   
+      4  pvs
+    5  fdisk -l
+    6  fdisk -c /dev/sdb
+    7  pvcreate /dev/sdb1
+    8  vgs
+    9  vgcreate VolGroupData /dev/sdb1
+   10  vgs
+   11  lvs
+   12  lvdisplay
+   13  lvcreate -L +20G -n LogVolData
+   14  lvcreate -L +20G -n LogVolData VolGroupData
+   15  lvs
+   16  mkfs.xfs /dev/VolGroupData/LogVolData
+   17  mkdir -p /data
+   18  mount -a
+   19  vi /etc/fstab
+   20  mount -a
+   21  df -h
+   22  lvs
+   23  df -h
+===========================================================================================================================================   
+Lun Details    
+[root@cad1xddb003 ~]# /sbin/fdisk -l
+
+Disk /dev/cciss/c0d0: 146.7 GB, 146745262080 bytes
+255 heads, 63 sectors/track, 17840 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+
+           Device Boot      Start         End      Blocks   Id  System
+/dev/cciss/c0d0p1   *           1           6       48163+  83  Linux
+/dev/cciss/c0d0p2               7        3922    31455270   83  Linux
+/dev/cciss/c0d0p3            3923        6533    20972857+  83  Linux
+/dev/cciss/c0d0p4            6534       17840    90823477+   5  Extended
+/dev/cciss/c0d0p5            6534        7838    10482381   83  Linux
+/dev/cciss/c0d0p6            7839        8882     8385898+  82  Linux swap
+/dev/cciss/c0d0p7            8883       17840    71955103+  83  Linux
+[root@cad1xddb003 ~]# cat /proc/scsi/scsi
+Attached devices:
+[root@cad1xddb003 ~]# sg_scan -i
+bash: sg_scan: command not found
+[root@cad1xddb003 ~]# blkid
+/dev/cciss/c0d0p1: LABEL="/boot" UUID="d5e1f7bf-e37f-40dd-8090-bd8b5580f517" SEC_TYPE="ext3" TYPE="ext2"
+/dev/cciss/c0d0p2: LABEL="/usr/local" UUID="a35d3b46-30c1-41d2-bca9-cfb0081bf926" SEC_TYPE="ext3" TYPE="ext2"
+/dev/cciss/c0d0p3: LABEL="/" UUID="2ebaf0e5-551f-4416-8af3-ea3011247325" SEC_TYPE="ext3" TYPE="ext2"
+/dev/cciss/c0d0p5: LABEL="/var" UUID="a9b2e4df-fd79-4cab-823e-2d94e20b24b0" SEC_TYPE="ext3" TYPE="ext2"
+/dev/cciss/c0d0p6: TYPE="swap" LABEL="SW-cciss/c0d0p6" UUID="91b4fb43-056c-43a7-b0e0-994a81655c7f"
+/dev/cciss/c0d0p7: UUID="cebfb5d2-8bdd-4f93-ad4a-7fcdc8482d23" SEC_TYPE="ext3" TYPE="ext2"
+[root@cad1xddb003 ~]# ls -la /dev/disk/by-id/
+ls: /dev/disk/by-id/: No such file or directory
+[root@cad1xddb003 ~]# multipath -ll
+[root@cad1xddb003 ~]# powermt display dev=all
+
